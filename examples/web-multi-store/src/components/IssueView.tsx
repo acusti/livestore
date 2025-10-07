@@ -3,7 +3,6 @@ import { IssueStoreProvider, useIssueStore } from '../stores/issue/context.ts'
 import { issueEvents, issueTables } from '../stores/issue/schema.ts'
 
 export function IssueView() {
-  // When no `storeId` is provided, use the store instance of the closest issue store provider
   const issueStore = useIssueStore()
   const issue = issueStore.useQuery(queryDb(issueTables.issue.select().limit(1)))
 

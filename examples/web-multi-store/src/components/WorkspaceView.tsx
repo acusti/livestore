@@ -1,7 +1,7 @@
 import { queryDb } from '@livestore/livestore'
 import { Suspense } from 'react'
-import { IssueStoreProvider } from '../stores/issue/context.ts'
-import { useWorkspaceStore } from '../stores/workspace/context.ts'
+import { IssueStoreProvider } from '../stores/issue'
+import { useWorkspaceStore } from '../stores/workspace/index.ts'
 import { workspaceEvents, workspaceTables } from '../stores/workspace/schema.ts'
 import { IssueView } from './IssueView.tsx'
 

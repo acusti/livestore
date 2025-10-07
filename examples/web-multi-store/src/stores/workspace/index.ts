@@ -1,7 +1,7 @@
 import { makePersistedAdapter } from '@livestore/adapter-web'
 import sharedWorker from '@livestore/adapter-web/shared-worker?sharedworker'
-import { unstable_batchedUpdates as batchUpdates } from 'react-dom'
-import { createStoreContext } from '../../../../../packages/@livestore/react/src/multi-store/index.ts'
+import { defineStore } from '@livestore/livestore'
+import { useStore } from '@livestore/react'
 import { workspaceSchema } from './schema.ts'
 import worker from './worker.ts?worker'
 
@@ -20,9 +20,12 @@ const adapter = makePersistedAdapter({
   resetPersistence,
 })
 
-export const [WorkspaceStoreProvider, useWorkspaceStore] = createStoreContext({
+export const workspaceStoreDef = defineStore({
   name: 'workspace',
   schema: workspaceSchema,
   adapter,
-  batchUpdates,
 })
+
+export function useWorkspaceStore() {
+  return useStore({ storeDef: workspaceStoreDef, storeId: 'workspace-root' })
+}

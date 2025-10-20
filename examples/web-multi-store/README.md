@@ -1,6 +1,6 @@
 # Multi-Store App
 
-This example demonstrates the `createStoreContext` API for managing multiple LiveStore instances in a React application.
+This example demonstrates the `createStoreContext` API for managing multiple LiveStore instances in a React application, now running on top of TanStack Start for full-stack routing and SSR.
 
 ## Patterns
 
@@ -33,23 +33,27 @@ Shows nested stores of the same type (Issue → Sub-Issue) to demonstrate recurs
 - **Error Boundaries**: Errors during store initialization are caught by React Error Boundaries
 - **Multi-Instance Access**: Components can access specific store instances using `useIssueStore({ storeId: 'instance-id' })`. `useStore()` without an ID accesses the store from the closest provider of the same type.
 
-## File Structure
+## Routing
+
+- Direct links are available for every demo: `/independent`, `/multi-instance`, `/chained`, and `/recursive`.
+- The TanStack Start router context exposes the shared `storeRegistry`, making it accessible from route loaders for future preloading or diagnostics work.
+- SSR is disabled globally (`defaultSsr: false` and per-route `ssr: false`) so the example runs entirely on the client, avoiding worker initialization during server execution.
+
+## File Structure (TanStack Start)
 
 ```
 src/
-├── stores/
-│   ├── workspace/       # Workspace store
-│   │   ├── schema.ts    # Schema definition
-│   │   ├── worker.ts    # Dedicated Worker of this store
-│   │   └── context.tsx  # React context using createStoreContext
-│   └── issue/           # Issue store
-├── components/
-│   ├── IndependentDemo.tsx     # Pattern 1
-│   ├── MultiInstancesDemo.tsx  # Pattern 2
-│   ├── ChainedDemo.tsx         # Pattern 3
-│   ├── RecursiveDemo.tsx       # Pattern 4
-│   ├── WorkspaceView.tsx
-│   └── IssueView.tsx
-├── Root.tsx  # Main app with tab navigation
-└── main.tsx  # Entry point
+├── routes/
+│   ├── __root.tsx         # Document shell + MultiStoreProvider + shared layout
+│   ├── chained.tsx        # Chained demo route
+│   ├── independent.tsx    # Independent demo route
+│   ├── index.tsx          # Redirect preserves legacy /
+│   ├── multi-instance.tsx # Multi-instance demo route
+│   └── recursive.tsx      # Recursive demo route
+├── components/           # Shared views (IssueView, WorkspaceView, etc.)
+├── stores/               # LiveStore schemas, workers, and store APIs
+├── router.ts             # Router factory that wires `routeTree.gen.ts`
+├── routeTree.gen.ts      # Auto-generated TanStack route tree (keep synced)
+├── styles.css            # Global styles
+└── ambient.d.ts          # Vite client typings
 ```

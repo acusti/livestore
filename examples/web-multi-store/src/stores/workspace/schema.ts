@@ -42,4 +42,4 @@ const materializers = State.SQLite.materializers(workspaceEvents, {
 
 const state = State.SQLite.makeState({ tables: workspaceTables, materializers })
 
-export const workspaceSchema = makeSchema({ events: workspaceEvents, state })
+export const schema = makeSchema({ events: workspaceEvents, state, devtools: { alias: 'workspace' } })

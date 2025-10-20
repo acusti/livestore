@@ -1,5 +1,5 @@
 import { makeWorker } from '@livestore/adapter-web/worker'
 
-import { workspaceSchema } from './schema.ts'
+import { schema } from './schema.ts'
 
-makeWorker({ schema: workspaceSchema })
+makeWorker({ schema })

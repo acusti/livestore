@@ -23,6 +23,8 @@ export const issueEvents = {
       workspaceId: Schema.String,
       title: Schema.String,
       createdAt: Schema.Date,
+      parentIssueId: Schema.optional(Schema.String),
+      childIssueIds: Schema.optional(Schema.Array(Schema.String)),
     }),
   }),
   issueStatusChanged: Events.synced({
@@ -35,11 +37,11 @@ export const issueEvents = {
 }
 
 const materializers = State.SQLite.materializers(issueEvents, {
-  'v1.IssueCreated': ({ id, workspaceId, title, createdAt }) =>
-    issueTables.issue.insert({ id, workspaceId, title, createdAt }),
+  'v1.IssueCreated': ({ id, workspaceId, title, createdAt, parentIssueId, childIssueIds }) =>
+    issueTables.issue.insert({ id, workspaceId, title, createdAt, parentIssueId, childIssueIds }),
   'v1.IssueStatusChanged': ({ id, status }) => issueTables.issue.update({ status }).where({ id }),
 })
 
 const state = State.SQLite.makeState({ tables: issueTables, materializers })
 
-export const issueSchema = makeSchema({ events: issueEvents, state })
+export const schema = makeSchema({ events: issueEvents, state, devtools: { alias: 'issue' } })

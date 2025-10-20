@@ -893,8 +893,8 @@ importers:
         version: 6.0.0(react@19.1.1)
     devDependencies:
       '@livestore/devtools-vite':
-        specifier: 0.4.0-dev.10
-        version: 0.4.0-dev.10(vite@7.1.7(@types/node@24.5.2)(jiti@2.5.1)(lightningcss@1.30.1)(terser@5.44.0)(tsx@4.20.5)(yaml@2.8.1))
+        specifier: 0.4.0-dev.12
+        version: 0.4.0-dev.12(vite@7.1.7(@types/node@24.5.2)(jiti@2.5.1)(lightningcss@1.30.1)(terser@5.44.0)(tsx@4.20.5)(yaml@2.8.1))
       '@types/react':
         specifier: ^19.1.13
         version: 19.1.13
@@ -16545,7 +16545,7 @@ snapshots:
       wrap-ansi: 7.0.0
       ws: 8.18.3
     optionalDependencies:
-      expo-router: 6.0.10(@types/react-dom@19.1.9(@types/react@19.1.13))(@types/react@19.1.13)(expo-constants@18.0.9)(expo-linking@8.0.8)(expo@54.0.12)(react-dom@19.1.1(react@19.1.1))(react-native-gesture-handler@2.28.0(react-native@0.81.4(@babel/core@7.28.4)(@types/react@19.1.13)(react@19.1.1))(react@19.1.1))(react-native-reanimated@4.1.1(@babel/core@7.28.4)(react-native-worklets@0.5.1(@babel/core@7.28.4)(react-native@0.81.4(@babel/core@7.28.4)(@types/react@19.1.13)(react@19.1.1))(react@19.1.1))(react-native@0.81.4(@babel/core@7.28.4)(@types/react@19.1.13)(react@19.1.1))(react@19.1.1))(react-native-safe-area-context@5.6.0(react-native@0.81.4(@babel/core@7.28.4)(@types/react@19.1.13)(react@19.1.1))(react@19.1.1))(react-native-screens@4.16.0(react-native@0.81.4(@babel/core@7.28.4)(@types/react@19.1.13)(react@19.1.1))(react@19.1.1))(react-native-web@0.21.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-native@0.81.4(@babel/core@7.28.4)(@types/react@19.1.13)(react@19.1.1))(react@19.1.1)
+      expo-router: 6.0.10(c068f7099a51329ea0b41923fbfe9c80)
       react-native: 0.81.4(@babel/core@7.28.4)(@types/react@19.1.13)(react@19.1.1)
     transitivePeerDependencies:
       - '@modelcontextprotocol/sdk'
@@ -24294,7 +24294,7 @@ snapshots:
       - '@types/react-dom'
       - supports-color
 
-  expo-router@6.0.10(@types/react-dom@19.1.9(@types/react@19.1.13))(@types/react@19.1.13)(expo-constants@18.0.9)(expo-linking@8.0.8)(expo@54.0.12)(react-dom@19.1.1(react@19.1.1))(react-native-gesture-handler@2.28.0(react-native@0.81.4(@babel/core@7.28.4)(@types/react@19.1.13)(react@19.1.1))(react@19.1.1))(react-native-reanimated@4.1.1(@babel/core@7.28.4)(react-native-worklets@0.5.1(@babel/core@7.28.4)(react-native@0.81.4(@babel/core@7.28.4)(@types/react@19.1.13)(react@19.1.1))(react@19.1.1))(react-native@0.81.4(@babel/core@7.28.4)(@types/react@19.1.13)(react@19.1.1))(react@19.1.1))(react-native-safe-area-context@5.6.0(react-native@0.81.4(@babel/core@7.28.4)(@types/react@19.1.13)(react@19.1.1))(react@19.1.1))(react-native-screens@4.16.0(react-native@0.81.4(@babel/core@7.28.4)(@types/react@19.1.13)(react@19.1.1))(react@19.1.1))(react-native-web@0.21.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react-native@0.81.4(@babel/core@7.28.4)(@types/react@19.1.13)(react@19.1.1))(react@19.1.1):
+  expo-router@6.0.10(c068f7099a51329ea0b41923fbfe9c80):
     dependencies:
       '@expo/metro-runtime': 6.1.2(expo@54.0.12)(react-dom@19.1.1(react@19.1.1))(react-native@0.81.4(@babel/core@7.28.4)(@types/react@19.1.13)(react@19.1.1))(react@19.1.1)
       '@expo/schema-utils': 0.1.7
@@ -24331,6 +24331,7 @@ snapshots:
       react-native-gesture-handler: 2.28.0(react-native@0.81.4(@babel/core@7.28.4)(@types/react@19.1.13)(react@19.1.1))(react@19.1.1)
       react-native-reanimated: 4.1.1(@babel/core@7.28.4)(react-native-worklets@0.5.1(@babel/core@7.28.4)(react-native@0.81.4(@babel/core@7.28.4)(@types/react@19.1.13)(react@19.1.1))(react@19.1.1))(react-native@0.81.4(@babel/core@7.28.4)(@types/react@19.1.13)(react@19.1.1))(react@19.1.1)
       react-native-web: 0.21.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+      react-server-dom-webpack: 19.1.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
     transitivePeerDependencies:
       - '@react-native-masked-view/masked-view'
       - '@types/react'
@@ -28712,6 +28713,15 @@ snapshots:
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
       webpack-sources: 3.3.3
+
+  react-server-dom-webpack@19.1.0(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
+    dependencies:
+      acorn-loose: 8.5.2
+      neo-async: 2.6.2
+      react: 19.1.1
+      react-dom: 19.1.1(react@19.1.1)
+      webpack-sources: 3.3.3
+    optional: true
 
   react-stately@3.41.0(react@19.1.0):
     dependencies:

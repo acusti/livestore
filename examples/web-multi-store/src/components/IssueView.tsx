@@ -1,10 +1,10 @@
 import { queryDb } from '@livestore/livestore'
-import { useSuspenseStore } from '@livestore/react/experimental'
+import { useStore } from '@livestore/react'
 import { issueStoreOptions } from '@/stores/issue'
 import { issueEvents, issueTables } from '../stores/issue/schema.ts'
 
 export function IssueView({ issueId }: { issueId: string }) {
-  const issueStore = useSuspenseStore(issueStoreOptions({ issueId })) // Will suspend component if the store is not yet loaded
+  const issueStore = useStore(issueStoreOptions(issueId)) // Will suspend component if the store is not yet loaded
   const [issue] = issueStore.useQuery(queryDb(issueTables.issue.select().limit(1)))
 
   const handleChangeStatus = (status: 'todo' | 'in-progress' | 'done') => {

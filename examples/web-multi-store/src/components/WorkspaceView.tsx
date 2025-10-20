@@ -1,5 +1,5 @@
 import { queryDb } from '@livestore/livestore'
-import { useStoreRegistry, useSuspenseStore } from '@livestore/react/experimental'
+import { useStore, useStoreRegistry } from '@livestore/react'
 import { Suspense, useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { ErrorFallback } from '@/components/ErrorFallback.tsx'
@@ -9,7 +9,7 @@ import { workspaceEvents, workspaceTables } from '../stores/workspace/schema.ts'
 import { IssueView } from './IssueView.tsx'
 
 export function WorkspaceView() {
-  const workspaceStore = useSuspenseStore(workspaceStoreOptions)
+  const workspaceStore = useStore(workspaceStoreOptions)
 
   const [workspace] = workspaceStore.useQuery(queryDb(workspaceTables.workspaces.select().limit(1)))
   const issueIds = workspaceStore.useQuery(
@@ -32,7 +32,11 @@ export function WorkspaceView() {
   const [isPreloadedIssueShown, setisPreloadedIssueShown] = useState(false)
 
   const storeRegistry = useStoreRegistry()
-  const preloadIssue = (issueId: string) => storeRegistry.preload(issueStoreOptions({ issueId, gcTime: 5_000 }))
+  const preloadIssue = (issueId: string) =>
+    storeRegistry.preload({
+      ...issueStoreOptions(issueId),
+      gcTime: 5_000,
+    })
 
   return (
     <div className="container">

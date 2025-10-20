@@ -1,6 +1,6 @@
 import { makePersistedAdapter } from '@livestore/adapter-web'
 import sharedWorker from '@livestore/adapter-web/shared-worker?sharedworker'
-import { storeOptions } from '@livestore/react/experimental'
+import { storeOptions } from '@livestore/react'
 import { issueEvents, issueTables, schema } from './schema.ts'
 import worker from './worker.ts?worker'
 
@@ -19,12 +19,12 @@ const generateIssueTitle = () => {
   return title
 }
 
-export const issueStoreOptions = ({ issueId, gcTime = 20_000 }: { issueId: string; gcTime?: number }) =>
+export const issueStoreOptions = (issueId: string) =>
   storeOptions({
     storeId: `issue-${issueId}`,
     schema,
     adapter,
-    gcTime: gcTime ?? 20_000,
+    gcTime: 20_000,
     boot: (store) => {
       // In a real-world app, you would handle seeding in the server by subscribing to the workspaceEvents.issueCreated event
       if (store.query(issueTables.issue.count()) === 0) {
